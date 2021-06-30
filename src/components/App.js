@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Birthdays from "../pages/Birthdays";
 import Signin from "../pages/Signin";
+import Signup from "../pages/Signup";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/about" exact component={About} />
             <Route path="/birthdays" exact component={Birthdays} />
             <Route path="/signin" exact component={Signin} />
+            <Route path="/signup" exact component={Signup} />
           </Switch>
         </main>
         <Footer />
