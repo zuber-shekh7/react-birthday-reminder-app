@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Birthdays from "../pages/Birthdays";
+import Signin from "../pages/Signin";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
             <Route path="/birthdays" exact component={Birthdays} />
+            <Route path="/signin" exact component={Signin} />
           </Switch>
         </main>
         <Footer />
