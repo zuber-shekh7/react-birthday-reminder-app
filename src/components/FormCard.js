@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Form } from "react-bootstrap";
 
 const FormCard = ({ title, children }) => {
-  console.log(children);
   return (
     <Card>
       <Card.Header className="bg-dark text-light">

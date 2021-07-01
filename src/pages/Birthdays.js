@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import BirthdayList from "../components/BirthdayList";
 
 const birthdays = [
@@ -31,6 +32,11 @@ const Birthdays = () => {
       <Row>
         <Col md={12}>
           <h1 className="text-center">Birthdays</h1>
+          <Container>
+            <Link className="btn btn-primary" to="/birthdays/new">
+              Add Birthday
+            </Link>
+          </Container>
           <BirthdayList birthdays={birthdays} />
         </Col>
       </Row>
