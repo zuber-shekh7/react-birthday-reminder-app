@@ -1,32 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BirthdayList from "../components/BirthdayList";
+import { fetchBirthdays } from "../actions/birthdays";
 
-const birthdays = [
-  {
-    id: 1,
-    name: "Rahul Dravid",
-    birthday: "2021-01-05",
-  },
-  {
-    id: 2,
-    name: "Sachin Tendulkar",
-    birthday: "2021-01-05",
-  },
-  {
-    id: 3,
-    name: "MS Dhoni",
-    birthday: "2021-01-05",
-  },
-  {
-    id: 4,
-    name: "Virat Kohli",
-    birthday: "2021-01-05",
-  },
-];
+const Birthdays = ({ birthdays, fetchBirthdays }) => {
+  useEffect(() => {
+    fetchBirthdays();
+  }, [fetchBirthdays]);
 
-const Birthdays = () => {
   return (
     <Container>
       <Row>
@@ -44,4 +27,16 @@ const Birthdays = () => {
   );
 };
 
-export default Birthdays;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBirthdays: () => dispatch(fetchBirthdays()),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    birthdays: state.birthdays,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Birthdays);

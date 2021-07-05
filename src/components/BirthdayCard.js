@@ -11,7 +11,7 @@ const BirthdayCard = ({ birthday }) => {
         />
         <Card.Body>
           <Card.Title className="text-center">{birthday.name}</Card.Title>
-          <p className="lead text-center">{birthday.birthday}</p>
+          <p className="lead text-center">{birthday.birth_date}</p>
           <Button block>Set Reminder</Button>
         </Card.Body>
       </Card>

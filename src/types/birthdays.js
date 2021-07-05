@@ -1,0 +1,2 @@
+export const FETCH_BIRTHDAYS = "FETCH_BIRTHDAYS";
+export const ADD_BIRTHDAY = "ADD_BIRTHDAY";
