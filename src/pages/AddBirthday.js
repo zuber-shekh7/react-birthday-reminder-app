@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import birthdaysAPI from "../apis/birthdaysAPI";
+import { addBirthday } from "../actions/birthdays";
 import FormCard from "../components/FormCard";
 
-const AddBirthday = () => {
+const AddBirthday = ({ addBirthday }) => {
   const [name, setName] = useState("");
   const [birthdate, setBirthdate] = useState(null);
   const history = useHistory();
 
-  const onSubmit = async (e) => {
-    try {
-      const response = await birthdaysAPI.post("birthdays/new/", {
-        name: name,
-        birth_date: birthdate,
-      });
-
-      if (response.status === 201) {
-        history.push("/birthdays");
-      }
-    } catch (error) {
-      alert(JSON.stringify(error.response.data));
-    }
+  const onSubmit = () => {
+    addBirthday(name, birthdate);
+    history.push("/birthdays/");
   };
 
   return (
@@ -60,4 +51,10 @@ const AddBirthday = () => {
   );
 };
 
-export default AddBirthday;
+const mapDispathToProps = (dispatch) => {
+  return {
+    addBirthday: (name, birthdate) => dispatch(addBirthday(name, birthdate)),
+  };
+};
+
+export default connect(null, mapDispathToProps)(AddBirthday);
