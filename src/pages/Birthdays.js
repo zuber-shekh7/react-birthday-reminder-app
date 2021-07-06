@@ -8,7 +8,7 @@ import { fetchBirthdays } from "../actions/birthdays";
 const Birthdays = ({ birthdays, fetchBirthdays }) => {
   useEffect(() => {
     fetchBirthdays();
-  }, [fetchBirthdays]);
+  }, [fetchBirthdays, birthdays]);
 
   return (
     <Container>

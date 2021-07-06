@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Form } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const FormCard = ({ title, children }) => {
   return (
@@ -7,9 +7,7 @@ const FormCard = ({ title, children }) => {
       <Card.Header className="bg-dark text-light">
         <h1 className="text-center">{title}</h1>
       </Card.Header>
-      <Card.Body>
-        <Form>{children}</Form>
-      </Card.Body>
+      <Card.Body>{children}</Card.Body>
     </Card>
   );
 };
