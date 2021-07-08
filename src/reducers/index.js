@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
+import authReducer from "./authReducer";
 import birthdaysReducer from "./birthdaysReducer";
 
 const reducer = combineReducers({
-  birthdays: birthdaysReducer,
+  auth: authReducer,
+  birthdays: birthdaysReducer
 });
 
 export default reducer;

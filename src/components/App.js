@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "../pages/About";
 import Home from "../pages/Home";
@@ -8,8 +8,15 @@ import Birthdays from "../pages/Birthdays";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import AddBirthday from "../pages/AddBirthday";
+import { connect } from "react-redux";
+import PrivateRoute from "../routes/PrivateRoute";
+import { isAuthenticated } from "../actions/auth";
 
-const App = () => {
+const App = ({ auth, isAuthenticated }) => {
+  useEffect(() => {
+    isAuthenticated();
+  }, [isAuthenticated]);
+
   return (
     <div>
       <Router>
@@ -18,7 +25,12 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
-            <Route path="/birthdays" exact component={Birthdays} />
+            <PrivateRoute
+              auth={auth.isAuthenticated}
+              path="/birthdays"
+              exact
+              component={Birthdays}
+            />
             <Route path="/birthdays/new" exact component={AddBirthday} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/signup" exact component={Signup} />
@@ -30,4 +42,16 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+const mapStateToDispath = (dispatch) => {
+  return {
+    isAuthenticated: () => dispatch(isAuthenticated()),
+  };
+};
+
+export default connect(mapStateToProps, mapStateToDispath)(App);
